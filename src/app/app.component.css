@@ -1,0 +1,33 @@
+  .navbar {
+      background-color: #f8f9fa;
+      padding: 10px 20px;
+      border-bottom: 1px solid #dee2e6;
+  }
+
+  .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+  }
+
+  .nav-links a {
+      text-decoration: none;
+      color: #007bff;
+  }
+
+  .nav-links a:hover {
+      text-decoration: underline;
+  }
+
+  .btn-nav {
+      background: none;
+      border: none;
+      color: #dc3545;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+  }
+
+  .btn-nav:hover {
+      text-decoration: underline;
+  }

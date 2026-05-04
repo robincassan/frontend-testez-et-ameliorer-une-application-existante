@@ -1,5 +1,11 @@
-<nav>
+<nav class="navbar">
+  <div class="nav-links">
     <a routerLink="/register">Inscription</a>
     <a routerLink="/login">Connexion</a>
+    @if (isLoggedIn) {
+      <a routerLink="/etudiants">Etudiants</a>
+      <button (click)="logout()" class="btn btn-link">Déconnexion</button>
+    }
+  </div>
 </nav>
 <router-outlet />

@@ -1,0 +1,48 @@
+<div class="card m-3">
+      <h5 class="card-header">Liste des étudiants</h5>
+      <div class="card-body">
+          <a routerLink="/etudiants/nouveau" class="btn btn-success mb-3">Ajouter un étudiant</a>
+          @if (loading) {
+              <div class="text-center">Chargement...</div>
+          }
+
+          @if (errorMessage) {
+              <div class="alert alert-danger">{{ errorMessage }}</div>
+          }
+
+          @if (!loading && etudiants.length === 0) {
+              <div class="alert alert-info">Aucun étudiant trouvé</div>
+          }
+
+          @if (!loading && etudiants.length > 0) {
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>Email</th>
+                          <th>Téléphone</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @for (etudiant of etudiants; track etudiant.id) {
+                          <tr>
+                              <td>{{ etudiant.id }}</td>
+                              <td>{{ etudiant.nom }}</td>
+                              <td>{{ etudiant.prenom }}</td>
+                              <td>{{ etudiant.email }}</td>
+                              <td>{{ etudiant.telephone || '-' }}</td>
+                              <td>
+                                  <a [routerLink]="['/etudiants', etudiant.id]" class="btn btn-sm btn-info">Voir</a>
+                                  <a [routerLink]="['/etudiants', etudiant.id, 'modifier']" class="btn btn-sm btn-warning">Modifier</a>
+                                  <button (click)="deleteEtudiant(etudiant.id)" class="btn btn-sm btn-danger">Supprimer</button>
+                              </td>
+                          </tr>
+                      }
+                  </tbody>
+              </table>
+          }
+      </div>
+  </div>
