@@ -1,4 +1,4 @@
-  import { defineConfig } from 'cypress';
+import { defineConfig } from 'cypress';
 
   export default defineConfig({
     e2e: {
@@ -7,5 +7,10 @@
       specPattern: 'cypress/e2e/**/*.cy.ts',
       video: false,
       screenshotOnRunFailure: false,
+      setupNodeEvents(on, config) {
+        // @ts-expect-error - require disponible dans le contexte Node de Cypress
+        require('@cypress/code-coverage/task')(on, config);
+        return config;
+      },
     },
   });
